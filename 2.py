@@ -1,0 +1,6 @@
+print("Введити имя")
+name = input()
+print("Введите фамилию")
+surname = input()
+l = (name + '' + surname)
+print("Длинна строки", len(l))
