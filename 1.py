@@ -1,6 +1,5 @@
 import random 
-
-colors = ["красный", "синий", "черный", 
+colors = ["красный", "синий", "черный",
           "зеленый", "желтый", "ораньжевый"]
 program_choice = random.choice(colors)
 
