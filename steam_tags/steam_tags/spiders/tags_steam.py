@@ -9,13 +9,15 @@ class SteamSpider(CrawlSpider):
     start_urls = ['https://store.steampowered.com/search/?filter=topsellers']
 
     rules = (
-        Rule(LinkExtractor(allow=r'/app/'), callback='parse_game', follow=True),
+        Rule(LinkExtractor(allow=r'/app/'),
+             callback='parse_game', follow=True),
     )
 
     game_counter = 0
 
     def parse_game(self, response):
-        if 'game_area_purchase_game' in response.body.decode('utf-8'):
+        if 'game_area_purchase_game' in \
+                response.body.decode('utf-8'):
             tags = []
             for tag in response.css('.app_tag::text').getall():
                 tag = tag.strip()
@@ -33,7 +35,8 @@ class SteamSpider(CrawlSpider):
                 self.game_counter += 1
 
                 if self.game_counter == 1000:
-                    raise scrapy.exceptions.CloseSpider('First 10 games recorded')
+                    raise scrapy.exceptions.CloseSpider\
+                        ('First 10 games recorded')
 
 
 if __name__ == '__main__':
