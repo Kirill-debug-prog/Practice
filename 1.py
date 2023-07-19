@@ -27,11 +27,12 @@ try:
         else:
             # Выводим информацию о топ 10 песен
             for i in range(10):
-                song_title = songs[i].find\
-                ('a', class_='track__title js-track-title').text.strip()
+                song_title = songs[i]\
+                    .find('a', class_='track__title js-track-title').\
+                    text.strip()
                 print(f"{i + 1}. {song_title}")
     else:
-        print("Ошибка при отправке запроса. "
+        print("Ошибка при отправке запроса."
               "Проверьте ссылку или подключение к интернету.")
 except requests.exceptions.RequestException as e:
     print("Ошибка при отправке запроса:", e)
