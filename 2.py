@@ -8,12 +8,12 @@ for _ in range(num_records):
     years = input("Введите год выпуска: ")
     records.append([books, authors, years])
 
-with open("books.csv", mode="a") as file:
+with open("books.csv", mode = "a") as file:
     writer = csv.writer(file)
     writer.writerows(records)
 
     author = input("Введите автора книги: ")
-    with open("books.csv", mode='r') as file:
+    with open("books.csv", mode = 'r') as file:
         reader = csv.reader(file)
         next(reader)
         books = []
