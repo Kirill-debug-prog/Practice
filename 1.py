@@ -1,4 +1,4 @@
-import random 
+import random
 
 
 colors = ["красный", "синий", "черный",
