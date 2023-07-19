@@ -30,10 +30,8 @@ class SteamSpider(CrawlSpider):
                         tags.append(tag)
 
             if self.game_counter < 10:
-                with open('steam_tags.csv', 'a') as f:
-                    f.write(','.join(tags) + '\n')
+                with open('steam_tags.csv', 'a') as f: f.write(','.join(tags) + '\n')
                 self.game_counter += 1
-
                 if self.game_counter == 1000:
                     raise scrapy.exceptions.CloseSpider\
                         ('First 10 games recorded')
