@@ -11,7 +11,7 @@ data = [
 ]
 
 filename = "books.csv"
-with open(filename, mode = "w", newline = '') as file:
+with open(filename, mode="w", newline ='') as file:
     writer = csv.writer(file)
     writer.writerows(data)
 print("Файл создан: ", filename)
