@@ -16,7 +16,7 @@ class SteamSpider(CrawlSpider):
     game_counter = 0
 
     def parse_game(self, response):
-        if 'game_area_purchase_game' in \
+        if 'game_area_purchase_game' in\
                 response.body.decode('utf-8'):
             tags = []
             for tag in response.css('.app_tag::text').getall():
@@ -45,6 +45,7 @@ if __name__ == '__main__':
     process = CrawlerProcess(settings={
         'FEEDS': {'steam_tags.csv': {'format': 'csv'}},
         'LOG_ENABLED': False
+        
     })
 
     process.crawl(SteamSpider)
