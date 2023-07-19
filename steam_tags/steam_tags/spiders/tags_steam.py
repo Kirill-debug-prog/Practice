@@ -16,7 +16,7 @@ class SteamSpider(CrawlSpider):
     game_counter = 0
 
     def parse_game(self, response):
-        if 'game_area_purchase_game' in\
+        if 'game_area_purchase_game' in \
                 response.body.decode('utf-8'):
             tags = []
             for tag in response.css('.app_tag::text').getall():
@@ -30,11 +30,12 @@ class SteamSpider(CrawlSpider):
                         tags.append(tag)
 
             if self.game_counter < 10:
-                with open('steam_tags.csv', 'a') as f: f.write(','.join(tags) + '\n')
+                with open('steam_tags.csv', 'a') as f:
+                    f.write(','.join(tags) + '\n')
                 self.game_counter += 1
                 if self.game_counter == 1000:
-                    raise scrapy.exceptions.CloseSpider\
-                        ('First 10 games recorded')
+                    raise scrapy.exceptions.\
+                        CloseSpider('First 10 games recorded')
 
 
 if __name__ == '__main__':
@@ -43,7 +44,7 @@ if __name__ == '__main__':
     process = CrawlerProcess(settings={
         'FEEDS': {'steam_tags.csv': {'format': 'csv'}},
         'LOG_ENABLED': False
-        
+
     })
 
     process.crawl(SteamSpider)
